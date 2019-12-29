@@ -1,0 +1,223 @@
+﻿<Window x:Class="kuryeGozlemTakip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kuryeGozlemTakip"
+        mc:Ignorable="d"
+      Title="Kredi Kartı Kurye Gözlem" MinHeight="680" MinWidth="510" WindowStartupLocation="CenterScreen">
+
+
+    <Window.Resources>
+        <Style x:Key="ListViewStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Name="KuryeGozlem">
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!--Baslik Resimli-->
+        <Border>
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left" Background="#FFF7F71C">
+                <Image Source="C:\Users\Kurt\Desktop\sonn\images\job.png" Height="26" Width="29" Margin="15,2,10,1"/>
+                <Label Content="ARAMA KRITERI" FontSize="16" Foreground="White" FontStyle="Italic" Opacity="3" />
+
+            </DockPanel>
+        </Border>
+
+        <!--<TextBlock Text="Arama Kriteri" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,8,0,0" FontStyle="Normal" FontSize="11" FontWeight="DemiBold"/>-->
+
+        <TextBlock Text="Ad:" Margin="5,3,20,3"  Padding="7" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" FontStyle="Italic" FontSize="11"/>
+        <TextBox Text="{Binding ad}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+        <TextBlock Text="İkinci Ad:" Margin="5,3,20,3"  Padding="7" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="ikinciAd" Text="{Binding ikinciAd}" Width="230" Height="18" Padding="1"  Margin="0,0,0,3" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Soyad:" Margin="5,3,20,3"  Padding="7" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="soyad" Text="{Binding soyad}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Kart No:" Margin="5,3,20,3" Padding="7" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="kartNo" Text="{Binding kartNo}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="4" MaxLength="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="İşlem Kodu:" Margin="5,3,20,3"  Padding="7" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="5" FontStyle="Italic" FontSize="11"/>
+        <ComboBox x:Name="islemKodu" Text="{Binding islemKodu}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                  SelectionChanged="IslemKodu_SelectionChanged">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+            <ComboBoxItem Content="7"/>
+            <ComboBoxItem Content="8"/>
+            <ComboBoxItem Content="9"/>
+            <ComboBoxItem Content="10"/>
+        </ComboBox>
+
+
+        <TextBlock Text="Kurye Kodu:" Margin="5,3,20,3" Padding="7" HorizontalAlignment="Left" Grid.Row="6" FontStyle="Italic" FontSize="11"/>
+        <ComboBox x:Name="kuryeKodu" Text="{Binding kuryeKodu}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                  SelectionChanged="KuryeKodu_SelectionChanged">
+            <ComboBoxItem Content="00"/>
+            <ComboBoxItem Content="01"/>
+            <ComboBoxItem Content="02"/>
+            <ComboBoxItem Content="03"/>
+            <ComboBoxItem Content="04"/>
+            <ComboBoxItem Content="05"/>
+            <ComboBoxItem Content="06"/>
+            <ComboBoxItem Content="07"/>
+            <ComboBoxItem Content="08"/>
+            <ComboBoxItem Content="09"/>
+        </ComboBox>
+
+
+        <TextBlock Text="Kaynak Kodu:" Margin="5,3,20,3" Padding="7" HorizontalAlignment="Left" Grid.Row="7" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="kaynakKodu" Text="{Binding kaynakKodu}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="7" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Kart Turu:" Margin="5,3,20,3" Padding="7" HorizontalAlignment="Left" Grid.Row="8" FontStyle="Italic" FontSize="11"/>
+        <ComboBox x:Name="kartTuru" Text="{Binding kartTuru}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                  SelectionChanged="KartTuru_SelectionChanged">
+            <ComboBoxItem Content="Plastik Kart"/>
+            <ComboBoxItem Content="Odeme Karti"/>
+            <ComboBoxItem Content="Kredi Karti"/>
+            <ComboBoxItem Content="Debit Karti"/>
+            <ComboBoxItem Content="Çek Karti"/>
+            <ComboBoxItem Content="Gold Kart"/>
+            <ComboBoxItem Content="Smart Kart"/>
+            <ComboBoxItem Content="Sanal Karti"/>
+        </ComboBox>
+
+
+        <TextBlock Text="Kayıt Tarihi:" Margin="5,3,20,3"  Padding="7" HorizontalAlignment="Left" Grid.Row="9" FontStyle="Italic" FontSize="11"/>
+        <DatePicker x:Name="kayitTarihi" Text="{Binding kayitTuru}" Width="230" Height="19" Padding="1" Margin="0,0,0,3" Grid.Row="9" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Teslim Tarihi:" Margin="5,3,20,3"  Padding="7" HorizontalAlignment="Left" Grid.Row="10" FontStyle="Italic" FontSize="11"/>
+        <DatePicker x:Name="teslimTarihi" Text="{Binding teslimTarihi}" Width="230" Height="19" Padding="1" Margin="0,0,0,3" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Kurye Veriliş Tarihi:" Margin="5,3,20,3" Padding="7" HorizontalAlignment="Left" Grid.Row="11" FontStyle="Italic" FontSize="11"/>
+        <DatePicker x:Name="kuryeVerilisTarihi" Text="{Binding kuryeVerilisTarihi}" Width="230" Height="19" Padding="1" Margin="0,0,0,3" Grid.Row="11" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Bs Müşteri No:" Margin="0,3,40,3" Padding="7" HorizontalAlignment="Left" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="bsMusteriNo" Text="{Binding bsMusteriNo}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Vb Müşteri No:" Margin="0,3,40,3"  Padding="7" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="vbMusteriNo" Text="{Binding vbMusteriNo}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Barkod:" Margin="0,3,40,3" Padding="7" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" RenderTransformOrigin="-0.021,0.334" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="barkod" Text="{Binding barkod}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="T.C Kimlik No:" Margin="0,3,40,3"  Padding="7" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1"  FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="tc" Text="{Binding tc}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="3" Grid.Column="1"  MaxLength="11" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Şube Kodu:" Margin="0,3,40,3"  Padding="7" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <!--<TextBox x:Name="subeKodu" Width="50" Height="18" Padding="1" Margin="120,0,0,3" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left"
+                 VerticalAlignment="Center"/>-->
+        <ComboBox x:Name="subeKodu" Text="{Binding subeKodu}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                  SelectionChanged="SubeKodu_SelectionChanged">
+            <ComboBoxItem Height="20" Content="111"/>
+            <ComboBoxItem Height="20" Content="222"/>
+            <ComboBoxItem Height="20" Content="333"/>
+            <ComboBoxItem Height="20" Content="444"/>
+            <ComboBoxItem Height="20" Content="555"/>
+            <ComboBoxItem Height="20" Content="666"/>
+            <ComboBoxItem Height="20" Content="777"/>
+            <ComboBoxItem Height="20" Content="888"/>
+        </ComboBox>
+
+        <TextBlock Text="Ürün Kodu:" Margin="0,3,40,3" Padding="7" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="urunKodu" Text="{Binding urunKodu}" Width="230" Height="18" Padding="1" Margin="0,0,0,3" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+        <TextBlock Text="Bayi Kodu:" Margin="0,3,40,3" Padding="7" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="bayiKodu" Text="{Binding bayiKodu}" Width="230" Height="18" Padding="1" Margin="0,0,0,3"  Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Sözleşmesi Var:" Margin="0,3,40,3" Padding="7" HorizontalAlignment="Left" Grid.Row="7" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <ComboBox x:Name="sozlesmey_n" Text="{Binding sozlesmey_n}" Width="230" Height="18" Padding="1" Margin="0,0,0,3"  Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                  SelectionChanged="Sozlesmey_n_SelectionChanged">
+            <ComboBoxItem Content="Sözleşmesi Var"/>
+            <ComboBoxItem Content="Sözleşmesi Yok"/>
+        </ComboBox>
+
+        <TextBlock Text="Basım Tarihi:" Margin="0,3,40,3" Padding="7" HorizontalAlignment="Left" Grid.Row="8" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <DatePicker x:Name="basimTarihi" Text="{Binding basimTarihi}" Width="230" Height="19" Padding="1" Margin="0,0,0,3"  Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="İade Tarihi:" Margin="0,3,40,3" Padding="7" HorizontalAlignment="Left" Grid.Row="9" Grid.Column="1" FontStyle="Italic" FontSize="11"/>
+        <DatePicker x:Name="iadeTarihi" Text="{Binding iadeTarihi}" Width="230" Height="19" Padding="1" Margin="0,0,0,3"  Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="10" Grid.Column="1">
+            <Button Content="Kaydet" x:Name="kaydet" Width="120" Height="20" Margin="5,42,80,5" Click="Kaydet_Click"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="11" Grid.Column="1">
+            <Button Content="Listele" x:Name="listele" Width="120" Height="20" Margin="5,42,80,5" Click="Listele_Click"/>
+        </StackPanel>
+
+        
+        <StackPanel Grid.Row="12" Grid.RowSpan="6" Grid.ColumnSpan="3"  Height="200" VerticalAlignment="Bottom">
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="12" Grid.RowSpan="6" Grid.ColumnSpan="3"  Height="200" VerticalAlignment="Bottom">
+            <DataGrid AutoGenerateColumns="True" Name="listView" HorizontalAlignment="Left" Height="307" Margin="0,10,0,0" Grid.Row="12" Grid.RowSpan="6" VerticalAlignment="Top" Width="1565" Grid.ColumnSpan="3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Barkod" Width="90" Binding="{Binding Barkod}"/>
+                    <DataGridTextColumn Header="Kart No" Width="90" Binding="{Binding kartNo}"/>
+                        <DataGridTextColumn Header="Bs Müşteri No" Width="90" Binding="{Binding bsMusteriNo}"/>
+                        <DataGridTextColumn Header="Vb Müşteri No" Width="90" Binding="{Binding vbMusteriNo}"/>
+                        <DataGridTextColumn Header="İşlem Kodu" Width="90" Binding="{Binding islemKodu}"/>
+                        <DataGridTextColumn Header="Kurye Kodu" Width="90" Binding="{Binding kuryeKodu}"/>
+                        <DataGridTextColumn Header="Kaynak Kodu" Width="90" Binding="{Binding kaynakKodu}"/>
+                        <DataGridTextColumn Header="Şube Kodu" Width="90" Binding="{Binding subeKodu}"/>
+                        <DataGridTextColumn Header="Ürün Kodu" Width="90" Binding="{Binding urunKodu}"/>
+                        <DataGridTextColumn Header="Bayi Kodu" Width="90" Binding="{Binding bayiKodu}"/>
+                        <DataGridTextColumn Header="Kayıt Tarihi" Width="90" Binding="{Binding kayitTarihi}"/>
+                        <DataGridTextColumn Header="Teslim Tarihi" Width="90" Binding="{Binding teslimTarihi}"/>
+                        <DataGridTextColumn Header="Kurye Veriliş Tarihi" Width="90" Binding="{Binding kuryeVerilisTarihi}"/>
+                        <DataGridTextColumn Header="İade Tarihi" Width="90" Binding="{Binding iadeTarihi}"/>
+                        <DataGridTextColumn Header="Adı" Width="90" Binding="{Binding ad}"/>
+                        <DataGridTextColumn Header="Soyadı" Width="90" Binding="{Binding soyad}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        </StackPanel>
+
+    </Grid>
+
+</Window>
